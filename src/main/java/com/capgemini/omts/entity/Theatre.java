@@ -7,10 +7,13 @@ import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+
+import com.capgemini.omts.util.TheatreConstants;
 
 @Entity
 @DynamicInsert
@@ -22,27 +25,31 @@ public class Theatre {
 	@Column(name = "Tid")
 	private int theatreId;
 	
-	@NotEmpty(message = "Theater name cannot be Empty")
-	@NotBlank(message = "only giving White Spaces are not allowed")
-	@Size(min = 1, max = 15, message = "Theatre Name should contain atleast 1 and atmost 25 characters")
+	@Pattern(regexp = TheatreConstants.REGEX)
+	@NotEmpty(message = TheatreConstants.NAMENOTEMPTY)
+	@NotBlank(message = TheatreConstants.BLANK)
+	@Size(min = 3, max = 25, message = TheatreConstants.SIZE)
 	@Column(name = "Tname")
 	private String theatreName;
 	
-	@NotEmpty(message = "Theater City cannot be Empty")
-	@NotBlank(message = "only giving White Spaces are not allowed")
-	@Size(min = 3, max = 25, message = "City should contain atleast 3 and atmost 25 characters")
+	@Pattern(regexp = TheatreConstants.REGEX)
+	@NotEmpty(message = TheatreConstants.CITYNOTEMPTY)
+	@NotBlank(message = TheatreConstants.BLANK)
+	@Size(min = 3, max = 25, message = TheatreConstants.SIZE)
 	@Column(name = "Tcity")
 	private String theatreCity;
 	
-	@NotEmpty(message = "Manager name cannot be Empty")
-	@NotBlank(message = "only giving White Spaces are not allowed")
-	@Size(min = 3, max = 25, message = "Manager Name should contain atleast 3 and atmost 25 characters")
+	@Pattern(regexp = TheatreConstants.REGEX)
+	@NotEmpty(message = TheatreConstants.MGNAMENOTEMTY)
+	@NotBlank(message = TheatreConstants.BLANK)
+	@Size(min = 3, max = 25, message = TheatreConstants.SIZE)
 	@Column(name = "TMname")
 	private String managerName;
 	
-	@NotEmpty(message = "Manager Contact cannot be Empty")
-	@NotBlank(message = "only giving White Spaces are not allowed")
-	@Email(message = "Manager Contact must be mail id only")
+	@Pattern(regexp = TheatreConstants.REGEX)
+	@NotEmpty(message = TheatreConstants.MGCTNOTEMPTY)
+	@NotBlank(message = TheatreConstants.BLANK)
+	@Email(message = TheatreConstants.MAIL)
 	@Column(name = "TMcontact")
 	private String managerContact;	
 	

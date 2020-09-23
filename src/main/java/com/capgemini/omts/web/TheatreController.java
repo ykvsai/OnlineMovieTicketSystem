@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.capgemini.omts.dto.TheatreMessage;
 import com.capgemini.omts.entity.Theatre;
+import com.capgemini.omts.exception.TheatreAlreadyExists;
 import com.capgemini.omts.exception.TheatreNotFoundException;
 import com.capgemini.omts.service.TheatreService;
+import com.capgemini.omts.util.TheatreConstants;
 
 @RestController
 @RequestMapping("theatre")
@@ -29,10 +31,10 @@ public class TheatreController {
 	
 	@CrossOrigin
 	@PostMapping(path = "/addtheatre")
-	public TheatreMessage addTheatre(@RequestBody Theatre theatre, HttpServletRequest request) throws TheatreNotFoundException{
+	public TheatreMessage addTheatre(@RequestBody Theatre theatre, HttpServletRequest request) throws TheatreAlreadyExists{
 				theatreSer.addTheatre(theatre);
 				TheatreMessage msg = new TheatreMessage();
-				msg.setMessage("Theatre Added Successfully");
+				msg.setMessage(TheatreConstants.ADDED);
 				return msg;
 	}
 	
@@ -41,7 +43,7 @@ public class TheatreController {
 	public TheatreMessage updateTheatre(@RequestBody Theatre theatre, HttpServletRequest request) throws TheatreNotFoundException{
 		theatreSer.updateTheatre(theatre);
 		TheatreMessage msg = new TheatreMessage();
-		msg.setMessage("Theatre Updated Successfully");
+		msg.setMessage(TheatreConstants.UPDATED);
 		return msg;
 	}
 	
@@ -51,7 +53,7 @@ public class TheatreController {
 		//theatreSer.deleteTheatre(theatre);
 		theatreSer.deleteTheatre(theatreId);
 		TheatreMessage msg = new TheatreMessage();
-		msg.setMessage("Theatre Deleted Successfully");
+		msg.setMessage(TheatreConstants.DELETED);
 		return msg;
 	}
 	

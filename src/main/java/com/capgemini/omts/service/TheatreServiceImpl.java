@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.capgemini.omts.entity.Theatre;
+import com.capgemini.omts.exception.TheatreAlreadyExists;
 import com.capgemini.omts.exception.TheatreNotFoundException;
 import com.capgemini.omts.repositry.TheatreRepositry;
+import com.capgemini.omts.util.TheatreConstants;
 
 @Service
 @Transactional
@@ -18,9 +20,9 @@ public class TheatreServiceImpl implements TheatreService {
 	TheatreRepositry TheatreRepo;
 	
 	@Override
-	public Theatre addTheatre(Theatre theatre) throws TheatreNotFoundException{
+	public Theatre addTheatre(Theatre theatre) throws TheatreAlreadyExists{
 		if(TheatreRepo.existsById(theatre.getTheatreId())) {
-			throw new TheatreNotFoundException("Already a Theatre exists with same Theatre ID");
+			throw new TheatreAlreadyExists(TheatreConstants.ALREADYEXIST);
 		}else {
 			return TheatreRepo.save(theatre);
 		}
@@ -31,7 +33,7 @@ public class TheatreServiceImpl implements TheatreService {
 		if(TheatreRepo.existsById(theatreId)) {
 			TheatreRepo.deleteById(theatreId);
 		}else {
-			throw new TheatreNotFoundException("Theatre not found");
+			throw new TheatreNotFoundException(TheatreConstants.NOTFOUND);
 		}		
 	}
 
@@ -40,7 +42,7 @@ public class TheatreServiceImpl implements TheatreService {
 		if(TheatreRepo.existsById(theatre.getTheatreId())) {
 			return TheatreRepo.save(theatre); 
 		}else {
-			throw new TheatreNotFoundException("Theatre not found");
+			throw new TheatreNotFoundException(TheatreConstants.NOTFOUND);
 		}
 	}
 
@@ -48,7 +50,7 @@ public class TheatreServiceImpl implements TheatreService {
 	public List<Theatre> viewTheatres() throws TheatreNotFoundException{
 		List<Theatre> theatreList = TheatreRepo.findAll();
 		if(theatreList.isEmpty()) {
-			throw new TheatreNotFoundException("Theatre List is Empty");
+			throw new TheatreNotFoundException(TheatreConstants.NOTHEATRE);
 		}else {
 			return theatreList;
 		}
