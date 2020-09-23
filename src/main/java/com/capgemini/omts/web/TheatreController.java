@@ -50,7 +50,6 @@ public class TheatreController {
 	@CrossOrigin
 	@DeleteMapping(path = "/deletetheatre/{theatreId}")
 	public TheatreMessage deleteTheatre(@PathVariable int theatreId, HttpServletRequest request) throws TheatreNotFoundException{
-		//theatreSer.deleteTheatre(theatre);
 		theatreSer.deleteTheatre(theatreId);
 		TheatreMessage msg = new TheatreMessage();
 		msg.setMessage(TheatreConstants.DELETED);
