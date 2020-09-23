@@ -29,32 +29,50 @@ public class TheatreController {
 	TheatreService theatreSer;
 
 	@PostMapping(path = "/addTheatre")
-	public TheatreMessage addTheatre(@RequestBody Theatre theatre) throws TheatreAlreadyExists {
-		theatreSer.addTheatre(theatre);
+	public TheatreMessage addTheatre(@RequestBody Theatre theatre) {
+		try {
+			theatreSer.addTheatre(theatre);
+		} catch (TheatreAlreadyExists exception) {
+			exception.printStackTrace();
+		}
 		TheatreMessage msg = new TheatreMessage();
 		msg.setMessage(TheatreConstants.ADDED);
 		return msg;
 	}
 
 	@PutMapping(path = "/updateTheatre")
-	public TheatreMessage updateTheatre(@RequestBody Theatre theatre) throws TheatreNotFoundException {
-		theatreSer.updateTheatre(theatre);
+	public TheatreMessage updateTheatre(@RequestBody Theatre theatre) {
+		try {
+			theatreSer.updateTheatre(theatre);
+		} catch (TheatreNotFoundException exception) {
+			exception.printStackTrace();
+		}
 		TheatreMessage msg = new TheatreMessage();
 		msg.setMessage(TheatreConstants.UPDATED);
 		return msg;
 	}
 
 	@DeleteMapping(path = "/deleteTheatre/{theatreId}")
-	public TheatreMessage deleteTheatre(@PathVariable int theatreId) throws TheatreNotFoundException {
-		theatreSer.deleteTheatre(theatreId);
+	public TheatreMessage deleteTheatre(@PathVariable int theatreId)  {
+		try {
+			theatreSer.deleteTheatre(theatreId);
+		} catch (TheatreNotFoundException exception) {
+			exception.printStackTrace();
+		}
 		TheatreMessage msg = new TheatreMessage();
 		msg.setMessage(TheatreConstants.DELETED);
 		return msg;
 	}
 
 	@GetMapping(path = "/viewTheatres")
-	public List<Theatre> viewTheatres() throws TheatreNotFoundException {
-		return theatreSer.viewTheatres();
+	public List<Theatre> viewTheatres() {
+		List<Theatre> theatreList = null;
+		try {
+			 theatreList = theatreSer.viewTheatres();
+		} catch (TheatreNotFoundException exception) {
+			exception.printStackTrace();
+		}
+		return theatreList;
 	}
 
 }

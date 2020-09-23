@@ -8,7 +8,4 @@ import com.capgemini.omts.entity.Theatre;
 @Repository
 public interface TheatreRepositry extends JpaRepository<Theatre, Integer> {
 
-	//@Query("sele")
-	//Theatre findByTheatreName(@Param String theatreName);
-	
 }

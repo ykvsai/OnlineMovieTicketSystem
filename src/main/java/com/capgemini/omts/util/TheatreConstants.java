@@ -1,7 +1,7 @@
 package com.capgemini.omts.util;
 
 public class TheatreConstants {
-	
+
 	public static final String REGEX = "^[a-zA-Z_ ]*$";
 	public static final String NAMENOTEMPTY = "Theater name cannot be Empty";
 	public static final String CITYNOTEMPTY = "Theater City cannot be Empty";

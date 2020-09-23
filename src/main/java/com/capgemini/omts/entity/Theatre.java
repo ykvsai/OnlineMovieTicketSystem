@@ -20,41 +20,41 @@ import com.capgemini.omts.util.TheatreConstants;
 @DynamicUpdate
 @Table(name = "Theatre")
 public class Theatre {
-	
+
 	@Id
 	@Column(name = "Tid")
 	private int theatreId;
-	
+
 	@Pattern(regexp = TheatreConstants.REGEX)
 	@NotEmpty(message = TheatreConstants.NAMENOTEMPTY)
 	@NotBlank(message = TheatreConstants.BLANK)
 	@Size(min = 3, max = 25, message = TheatreConstants.SIZE)
 	@Column(name = "Tname")
 	private String theatreName;
-	
+
 	@Pattern(regexp = TheatreConstants.REGEX)
 	@NotEmpty(message = TheatreConstants.CITYNOTEMPTY)
 	@NotBlank(message = TheatreConstants.BLANK)
 	@Size(min = 3, max = 25, message = TheatreConstants.SIZE)
 	@Column(name = "Tcity")
 	private String theatreCity;
-	
+
 	@Pattern(regexp = TheatreConstants.REGEX)
 	@NotEmpty(message = TheatreConstants.MGNAMENOTEMTY)
 	@NotBlank(message = TheatreConstants.BLANK)
 	@Size(min = 3, max = 25, message = TheatreConstants.SIZE)
 	@Column(name = "TMname")
 	private String managerName;
-		
+
 	@NotEmpty(message = TheatreConstants.MGCTNOTEMPTY)
 	@NotBlank(message = TheatreConstants.BLANK)
 	@Email(message = TheatreConstants.MAIL)
 	@Column(name = "TMcontact")
-	private String managerContact;	
-	
+	private String managerContact;
+
 	public Theatre() {
 		super();
-	}	
+	}
 
 	public int getTheatreId() {
 		return theatreId;
@@ -101,5 +101,5 @@ public class Theatre {
 		return "theatreId=" + theatreId + ", theatreName=" + theatreName + ", theatreCity=" + theatreCity
 				+ ", managerName=" + managerName + ", managerContact=" + managerContact;
 	}
-	
+
 }
