@@ -25,28 +25,28 @@ public class Theatre {
 	@Column(name = "Tid")
 	private int theatreId;
 	
-	@Pattern(regexp = TheatreConstants.REGEX)
+	
 	@NotEmpty(message = TheatreConstants.NAMENOTEMPTY)
 	@NotBlank(message = TheatreConstants.BLANK)
 	@Size(min = 3, max = 25, message = TheatreConstants.SIZE)
 	@Column(name = "Tname")
 	private String theatreName;
 	
-	@Pattern(regexp = TheatreConstants.REGEX)
+	
 	@NotEmpty(message = TheatreConstants.CITYNOTEMPTY)
 	@NotBlank(message = TheatreConstants.BLANK)
 	@Size(min = 3, max = 25, message = TheatreConstants.SIZE)
 	@Column(name = "Tcity")
 	private String theatreCity;
 	
-	@Pattern(regexp = TheatreConstants.REGEX)
+	
 	@NotEmpty(message = TheatreConstants.MGNAMENOTEMTY)
 	@NotBlank(message = TheatreConstants.BLANK)
 	@Size(min = 3, max = 25, message = TheatreConstants.SIZE)
 	@Column(name = "TMname")
 	private String managerName;
 	
-	@Pattern(regexp = TheatreConstants.REGEX)
+	
 	@NotEmpty(message = TheatreConstants.MGCTNOTEMPTY)
 	@NotBlank(message = TheatreConstants.BLANK)
 	@Email(message = TheatreConstants.MAIL)
