@@ -2,8 +2,6 @@ package com.capgemini.omts.web;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,43 +20,40 @@ import com.capgemini.omts.exception.TheatreNotFoundException;
 import com.capgemini.omts.service.TheatreService;
 import com.capgemini.omts.util.TheatreConstants;
 
+@CrossOrigin
 @RestController
 @RequestMapping("theatre")
 public class TheatreController {
-	
+
 	@Autowired
 	TheatreService theatreSer;
-	
-	@CrossOrigin
-	@PostMapping(path = "/addtheatre")
-	public TheatreMessage addTheatre(@RequestBody Theatre theatre, HttpServletRequest request) throws TheatreAlreadyExists{
-				theatreSer.addTheatre(theatre);
-				TheatreMessage msg = new TheatreMessage();
-				msg.setMessage(TheatreConstants.ADDED);
-				return msg;
+
+	@PostMapping(path = "/addTheatre")
+	public TheatreMessage addTheatre(@RequestBody Theatre theatre) throws TheatreAlreadyExists {
+		theatreSer.addTheatre(theatre);
+		TheatreMessage msg = new TheatreMessage();
+		msg.setMessage(TheatreConstants.ADDED);
+		return msg;
 	}
-	
-	@CrossOrigin
-	@PutMapping(path = "/updatetheatre")
-	public TheatreMessage updateTheatre(@RequestBody Theatre theatre, HttpServletRequest request) throws TheatreNotFoundException{
+
+	@PutMapping(path = "/updateTheatre")
+	public TheatreMessage updateTheatre(@RequestBody Theatre theatre) throws TheatreNotFoundException {
 		theatreSer.updateTheatre(theatre);
 		TheatreMessage msg = new TheatreMessage();
 		msg.setMessage(TheatreConstants.UPDATED);
 		return msg;
 	}
-	
-	@CrossOrigin
-	@DeleteMapping(path = "/deletetheatre/{theatreId}")
-	public TheatreMessage deleteTheatre(@PathVariable int theatreId, HttpServletRequest request) throws TheatreNotFoundException{
+
+	@DeleteMapping(path = "/deleteTheatre/{theatreId}")
+	public TheatreMessage deleteTheatre(@PathVariable int theatreId) throws TheatreNotFoundException {
 		theatreSer.deleteTheatre(theatreId);
 		TheatreMessage msg = new TheatreMessage();
 		msg.setMessage(TheatreConstants.DELETED);
 		return msg;
 	}
-	
-	@CrossOrigin
-	@GetMapping(path = "/viewtheatres")
-	public List<Theatre> viewTheatres(HttpServletRequest request) throws TheatreNotFoundException{
+
+	@GetMapping(path = "/viewTheatres")
+	public List<Theatre> viewTheatres() throws TheatreNotFoundException {
 		return theatreSer.viewTheatres();
 	}
 
