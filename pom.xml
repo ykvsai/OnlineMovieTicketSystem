@@ -8,10 +8,10 @@
 		<version>2.2.6.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.ecommerce</groupId>
-	<artifactId>ecommerce-V1.0</artifactId>
+	<groupId>com.capgemini</groupId>
+	<artifactId>Online-Movie-Ticket-System</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ecommerce-V1.0</name>
+	<name>Online-Movie-Ticket-System</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
