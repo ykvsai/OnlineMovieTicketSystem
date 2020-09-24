@@ -1,5 +1,11 @@
 package com.capgemini.omts.util;
 
+/*************************************************************************************************************************
+ * @author Yakkala Kesava Venkata Sai
+ * @since 22-September-2020
+ * @Description: It is a Utility class for Theatre module in Online Movie Ticket
+ *               System
+ *************************************************************************************************************************/
 public class TheatreConstants {
 
 	public static final String REGEX = "^[a-zA-Z_ ]*$";

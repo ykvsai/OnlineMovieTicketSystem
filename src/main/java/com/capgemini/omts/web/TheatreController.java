@@ -20,6 +20,12 @@ import com.capgemini.omts.exception.TheatreNotFoundException;
 import com.capgemini.omts.service.TheatreService;
 import com.capgemini.omts.util.TheatreConstants;
 
+/*************************************************************************************************************************
+ * @author Yakkala Kesava Venkata Sai
+ * @since 21-September-2020
+ * @Description: It is a Controller class for Theatre module in Online Movie
+ *               Ticket System
+ *************************************************************************************************************************/
 @CrossOrigin
 @RestController
 @RequestMapping("theatre")
@@ -28,6 +34,13 @@ public class TheatreController {
 	@Autowired
 	TheatreService theatreSer;
 
+	/*********************************************************************************************************************************
+	 * @Method addTheatre
+	 * @Description To add a Theatre into Data Base
+	 * @param Theatre object theatre
+	 * @return user defined String message
+	 * @since 22-September-2020
+	 **********************************************************************************************************************************/
 	@PostMapping(path = "/addTheatre")
 	public TheatreMessage addTheatre(@RequestBody Theatre theatre) {
 		try {
@@ -40,6 +53,13 @@ public class TheatreController {
 		return msg;
 	}
 
+	/*********************************************************************************************************************************
+	 * @Method updateTheatre
+	 * @Description To update an existing Theatre in Data Base
+	 * @param Theatre object theatre
+	 * @return user defined String message
+	 * @since 22-September-2020
+	 **********************************************************************************************************************************/
 	@PutMapping(path = "/updateTheatre")
 	public TheatreMessage updateTheatre(@RequestBody Theatre theatre) {
 		try {
@@ -52,8 +72,15 @@ public class TheatreController {
 		return msg;
 	}
 
+	/*********************************************************************************************************************************
+	 * @Method deleteTheatre
+	 * @Description To delete a Theatre with the help of Theatre ID in Data Base
+	 * @param Integer Theatre ID
+	 * @return user defined String message
+	 * @since 22-September-2020
+	 **********************************************************************************************************************************/
 	@DeleteMapping(path = "/deleteTheatre/{theatreId}")
-	public TheatreMessage deleteTheatre(@PathVariable int theatreId)  {
+	public TheatreMessage deleteTheatre(@PathVariable int theatreId) {
 		try {
 			theatreSer.deleteTheatre(theatreId);
 		} catch (TheatreNotFoundException exception) {
@@ -64,11 +91,17 @@ public class TheatreController {
 		return msg;
 	}
 
+	/*********************************************************************************************************************************
+	 * @Method viewTheatres
+	 * @Description To view all Theatres present in the Data Base
+	 * @return List of all theatres present in Data Base
+	 * @since 22-September-2020
+	 **********************************************************************************************************************************/
 	@GetMapping(path = "/viewTheatres")
 	public List<Theatre> viewTheatres() {
 		List<Theatre> theatreList = null;
 		try {
-			 theatreList = theatreSer.viewTheatres();
+			theatreList = theatreSer.viewTheatres();
 		} catch (TheatreNotFoundException exception) {
 			exception.printStackTrace();
 		}

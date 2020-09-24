@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.capgemini.omts.entity.Theatre;
 import com.capgemini.omts.exception.TheatreAlreadyExists;
 import com.capgemini.omts.exception.TheatreNotFoundException;
-import com.capgemini.omts.repositry.TheatreRepositry;
+import com.capgemini.omts.repository.TheatreRepository;
 import com.capgemini.omts.service.TheatreServiceImpl;
 
 @RunWith(SpringRunner.class)
@@ -26,7 +26,7 @@ class OnlineMovieTicketSystemApplicationTests {
 	private Theatre theatre;
 	
 	@Mock
-	private TheatreRepositry repo;
+	private TheatreRepository repo;
 	
 	@InjectMocks
 	private TheatreServiceImpl ser;

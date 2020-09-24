@@ -15,6 +15,12 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import com.capgemini.omts.util.TheatreConstants;
 
+/*************************************************************************************************************************
+ * @author Yakkala Kesava Venkata Sai
+ * @since 21-September-2020
+ * @Description: It is a Entity class for Theatre module in Online Movie Ticket
+ *               System
+ *************************************************************************************************************************/
 @Entity
 @DynamicInsert
 @DynamicUpdate
