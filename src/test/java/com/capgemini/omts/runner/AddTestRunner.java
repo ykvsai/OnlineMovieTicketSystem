@@ -7,6 +7,6 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "Feature/add.feature", glue = {"com.capgemini.omts.stepDefinition"})
-public class TestRunner {
+public class AddTestRunner {
 
 }

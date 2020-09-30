@@ -1,6 +1,5 @@
 package com.capgemini.omts.stepDefinition;
 
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,7 +12,7 @@ import cucumber.api.java.en.When;
 
 public class AddSuccessful {
 
-	static WebDriver driver;
+	public static WebDriver driver;
 
 	@Before
 	public void setup() {
@@ -55,13 +54,4 @@ public class AddSuccessful {
 	public void pressed_Add_button() throws Throwable {
 		driver.findElement(By.xpath("//input[@class='btn btn-success btn-lg']")).click();
 	}
-
-//	@Then("^user pressed ok on added succesfully alert message$")
-//	public void user_pressed_ok_on_added_succesfully_alert_message() throws Throwable {
-//		Alert alert = driver.switchTo().alert();
-//		String alertmessage = driver.switchTo().alert().getText();
-//		System.out.println(alertmessage);
-//		alert.accept();
-//	}
-
 }
