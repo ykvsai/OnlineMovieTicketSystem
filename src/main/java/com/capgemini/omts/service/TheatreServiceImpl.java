@@ -3,6 +3,7 @@ package com.capgemini.omts.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.capgemini.omts.entity.Theatre;
@@ -79,14 +80,15 @@ public class TheatreServiceImpl implements TheatreService {
 
 	/*********************************************************************************************************************************
 	 * @Method viewTheatres
-	 * @Description To view all Theatres present in the Data Base
+	 * @Description To view all Theatres after sorting in ascending order present in
+	 *              the Data Base
 	 * @throws TheatreNotFoundException
-	 * @return list of all theatres if data base is not empty
+	 * @return list of all theatres in ascending order if data base is not empty
 	 * @since 21-September-2020
 	 **********************************************************************************************************************************/
 	@Override
 	public List<Theatre> viewTheatres() throws TheatreNotFoundException {
-		List<Theatre> theatreList = TheatreRepo.findAll();
+		List<Theatre> theatreList = TheatreRepo.findAll(Sort.by(Sort.Direction.ASC, "theatreId"));
 		if (theatreList.isEmpty()) {
 			throw new TheatreNotFoundException(TheatreConstants.NOTHEATRE);
 		} else {

@@ -39,18 +39,17 @@ public class TheatreController {
 	 * @Description To add a Theatre into Data Base
 	 * @param Theatre object theatre
 	 * @return user defined String message
+	 * @throws TheatreAlreadyExists
 	 * @since 22-September-2020
 	 **********************************************************************************************************************************/
 	@PostMapping(path = "/addTheatre")
-	public TheatreMessage addTheatre(@RequestBody Theatre theatre) {
-		try {
-			theatreSer.addTheatre(theatre);
-		} catch (TheatreAlreadyExists exception) {
-			exception.printStackTrace();
-		}
+	public TheatreMessage addTheatre(@RequestBody Theatre theatre) throws TheatreAlreadyExists {
+
+		theatreSer.addTheatre(theatre);
 		TheatreMessage msg = new TheatreMessage();
 		msg.setMessage(TheatreConstants.ADDED);
 		return msg;
+
 	}
 
 	/*********************************************************************************************************************************
@@ -61,15 +60,13 @@ public class TheatreController {
 	 * @since 22-September-2020
 	 **********************************************************************************************************************************/
 	@PutMapping(path = "/updateTheatre")
-	public TheatreMessage updateTheatre(@RequestBody Theatre theatre) {
-		try {
-			theatreSer.updateTheatre(theatre);
-		} catch (TheatreNotFoundException exception) {
-			exception.printStackTrace();
-		}
+	public TheatreMessage updateTheatre(@RequestBody Theatre theatre) throws TheatreNotFoundException {
+
+		theatreSer.updateTheatre(theatre);
 		TheatreMessage msg = new TheatreMessage();
 		msg.setMessage(TheatreConstants.UPDATED);
 		return msg;
+
 	}
 
 	/*********************************************************************************************************************************
@@ -77,18 +74,17 @@ public class TheatreController {
 	 * @Description To delete a Theatre with the help of Theatre ID in Data Base
 	 * @param Integer Theatre ID
 	 * @return user defined String message
+	 * @throws TheatreNotFoundException
 	 * @since 22-September-2020
 	 **********************************************************************************************************************************/
 	@DeleteMapping(path = "/deleteTheatre/{theatreId}")
-	public TheatreMessage deleteTheatre(@PathVariable int theatreId) {
-		try {
-			theatreSer.deleteTheatre(theatreId);
-		} catch (TheatreNotFoundException exception) {
-			exception.printStackTrace();
-		}
+	public TheatreMessage deleteTheatre(@PathVariable int theatreId) throws TheatreNotFoundException {
+
+		theatreSer.deleteTheatre(theatreId);
 		TheatreMessage msg = new TheatreMessage();
 		msg.setMessage(TheatreConstants.DELETED);
 		return msg;
+
 	}
 
 	/*********************************************************************************************************************************
@@ -98,14 +94,10 @@ public class TheatreController {
 	 * @since 22-September-2020
 	 **********************************************************************************************************************************/
 	@GetMapping(path = "/viewTheatres")
-	public List<Theatre> viewTheatres() {
-		List<Theatre> theatreList = null;
-		try {
-			theatreList = theatreSer.viewTheatres();
-		} catch (TheatreNotFoundException exception) {
-			exception.printStackTrace();
-		}
-		return theatreList;
+	public List<Theatre> viewTheatres() throws TheatreNotFoundException {
+
+		return theatreSer.viewTheatres();
+
 	}
 
 }

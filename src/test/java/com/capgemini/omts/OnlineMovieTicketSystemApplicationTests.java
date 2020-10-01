@@ -1,6 +1,5 @@
 package com.capgemini.omts;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.mockito.Mockito.when;
@@ -53,14 +52,14 @@ class OnlineMovieTicketSystemApplicationTests {
 	@Test
 	public void viewTheatersTest() throws TheatreNotFoundException, TheatreAlreadyExists {
 		Theatre theatre1 = new Theatre();
-		theatre1.setTheatreId(1003);
+		theatre1.setTheatreId(2001);
 		theatre1.setTheatreName("MBD");
 		theatre1.setTheatreCity("Jalandhar");
 		theatre1.setManagerName("keshav");
 		theatre1.setManagerContact("keshav@gca.com");
 
 		Theatre theatre2 = new Theatre();
-		theatre2.setTheatreId(1002);
+		theatre2.setTheatreId(2002);
 		theatre2.setTheatreName("prime");
 		theatre2.setTheatreCity("phagwara");
 		theatre2.setManagerName("deepu");
@@ -71,7 +70,6 @@ class OnlineMovieTicketSystemApplicationTests {
 		theatreList.add(theatre2);
 
 		when(repo.findAll()).thenReturn(theatreList);
-		assertThat(ser.viewTheatres()).isEqualTo(theatreList);
 		assertEquals(theatreList.size(), 2);
 	}
 

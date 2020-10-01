@@ -14,6 +14,12 @@ public class AddSuccessful {
 
 	public static WebDriver driver;
 
+	/*********************************************************************************************************************************
+	 * @Method setup
+	 * @Description To Setup Chrome Web Driver Before every Step Definition class
+	 * @return void
+	 * @since 29-September-2020
+	 **********************************************************************************************************************************/
 	@Before
 	public void setup() {
 
@@ -24,6 +30,12 @@ public class AddSuccessful {
 
 	}
 
+	/*********************************************************************************************************************************
+	 * @Method teardown
+	 * @Description To close Web Driver after running every Step Definition class
+	 * @return void
+	 * @since 29-September-2020
+	 **********************************************************************************************************************************/
 	@After
 	public void teardown() {
 
@@ -32,6 +44,12 @@ public class AddSuccessful {
 
 	}
 
+	/*********************************************************************************************************************************
+	 * @Method user_pressed_Add_Theatre_button_after_opening_website
+	 * @Description this method will do Given preconditions by customer
+	 * @return void
+	 * @since 29-September-2020
+	 **********************************************************************************************************************************/
 	@Given("^user pressed Add Theatre button after opening website$")
 	public void user_pressed_Add_Theatre_button_after_opening_website() throws Throwable {
 
@@ -41,6 +59,12 @@ public class AddSuccessful {
 		driver.findElement(By.xpath("//a[contains(text(),'Add Theater')]")).click();
 	}
 
+	/*********************************************************************************************************************************
+	 * @Method user_entered_valid_data_in_all_fields
+	 * @Description this method will process the requirements given by customer
+	 * @return void
+	 * @since 29-September-2020
+	 **********************************************************************************************************************************/
 	@When("^user entered valid data in all fields$")
 	public void user_entered_valid_data_in_all_fields() throws Throwable {
 		driver.findElement(By.xpath("//input[@name='txtid']")).sendKeys("9001");
@@ -50,6 +74,12 @@ public class AddSuccessful {
 		driver.findElement(By.xpath("//input[@name='txtmgct']")).sendKeys("kinta@pb.com");
 	}
 
+	/*********************************************************************************************************************************
+	 * @Method pressed_DELETE_button
+	 * @Description this method executes and shows the final output
+	 * @return void
+	 * @since 29-September-2020
+	 **********************************************************************************************************************************/
 	@Then("^pressed Add button$")
 	public void pressed_Add_button() throws Throwable {
 		driver.findElement(By.xpath("//input[@class='btn btn-success btn-lg']")).click();

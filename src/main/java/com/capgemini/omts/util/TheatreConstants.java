@@ -22,5 +22,6 @@ public class TheatreConstants {
 	public static final String ADDED = "Theatre Added Successfully";
 	public static final String UPDATED = "Theatre Updated Successfully";
 	public static final String DELETED = "Theatre Deleted Successfully";
+	public static final String GLUE = "com.capgemini.omts.stepDefinition";
 
 }
